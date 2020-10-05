@@ -26,8 +26,8 @@ public class HomeActivity extends AppCompatActivity {
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                Intent explicit = new Intent(getApplicationContext(), ListBatik.class);
-//                startActivity(explicit);
+                Intent explicit = new Intent(getApplicationContext(), Main_ListBatik.class);
+                startActivity(explicit);
             }
         });
 
