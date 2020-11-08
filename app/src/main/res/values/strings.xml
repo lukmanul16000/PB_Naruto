@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">PB_Naruto</string>
+    <string name="about_app">About App</string>
+    <string name="about_team">About Team</string>
 </resources>
