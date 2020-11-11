@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.example.pb_naruto.LoginActivity;
 import com.example.pb_naruto.R;
 import com.example.pb_naruto.adapters.OnboardingAdapter;
 import com.example.pb_naruto.model.OnboardingItem;
@@ -32,14 +33,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        if (restorePrefData()) {
-
-            Intent HomeActivity = new Intent(getApplicationContext(),HomeActivity.class );
-            startActivity(HomeActivity);
-            finish();
-
-
-        }
+//        if (restorePrefData()) {
+//
+//            Intent HomeActivity = new Intent(getApplicationContext(),HomeActivity.class );
+//            startActivity(HomeActivity);
+//            finish();
+//        }
 
         layoutOnboardingIndicators = findViewById(R.id.layoutOnboardingIndicators);
         buttonOnboardingAction = findViewById(R.id.buttonOnboardingAction);
@@ -67,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 if(onboardingViewPager.getCurrentItem()+1 < onboardingAdapter.getItemCount()){
                     onboardingViewPager.setCurrentItem(onboardingViewPager.getCurrentItem()+1);
                 }else{
-                    Intent explicit = new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent explicit = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(explicit);
                     savePrefsData();
                     finish();
