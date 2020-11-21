@@ -1,4 +1,4 @@
-package com.example.pb_naruto;
+package com.example.pb_naruto.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.pb_naruto.activities.HomeActivity;
+import com.example.pb_naruto.R;
 import com.example.pb_naruto.helper.DBHelper;
 
 

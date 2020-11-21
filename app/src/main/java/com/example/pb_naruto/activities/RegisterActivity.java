@@ -1,4 +1,4 @@
-package com.example.pb_naruto;
+package com.example.pb_naruto.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
@@ -7,8 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-import android.os.Bundle;
 
+import com.example.pb_naruto.R;
 import com.example.pb_naruto.helper.DBHelper;
 
 public class RegisterActivity extends AppCompatActivity {

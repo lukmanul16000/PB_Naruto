@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-import com.example.pb_naruto.LoginActivity;
 import com.example.pb_naruto.R;
 import com.example.pb_naruto.adapters.OnboardingAdapter;
 import com.example.pb_naruto.model.OnboardingItem;

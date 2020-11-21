@@ -90,7 +90,6 @@ public class Main_ListBatik extends AppCompatActivity  implements AnimeAdapter.O
 
                                     Date end1 = format.parse(mend_date);
                                     String end_date = format.format(end1);
-
                                     animeLists.add(new AnimeList(mimage_url, mtitle, mepisodes,murl,mairing,msynopsis,mtype,mscore,start_date,end_date,mmembers,mrated));
                                 } catch (ParseException e) {
                                     e.printStackTrace();
