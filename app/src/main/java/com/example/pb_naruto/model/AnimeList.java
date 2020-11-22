@@ -6,6 +6,10 @@ public class AnimeList {
     private int mepisodes;
 
 
+
+    private int mal_id;
+
+
 //    add more for intent
     private String murl;
     private String mairing;
@@ -19,7 +23,8 @@ public class AnimeList {
 
     public AnimeList(){}
 
-    public AnimeList(String image_url, String title, int episodes,String url,String airing,String synopsis,String type,String score,String start_date,String end_date,int members,String rated) {
+    public AnimeList(int mal_id,String image_url, String title, int episodes,String url,String airing,String synopsis,String type,String score,String start_date,String end_date,int members,String rated) {
+        mal_id=mal_id;
         mimage_url = image_url;
         mtitle = title;
         mepisodes = episodes;
@@ -34,6 +39,13 @@ public class AnimeList {
         mrated = rated;
     }
 
+    public int getMal_id() {
+        return mal_id;
+    }
+
+    public void setMal_id(int mal_id) {
+        this.mal_id = mal_id;
+    }
     public String getMimage_url() {
         return mimage_url;
     }

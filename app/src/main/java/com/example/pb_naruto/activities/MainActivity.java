@@ -32,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-//        if (restorePrefData()) {
-//
-//            Intent HomeActivity = new Intent(getApplicationContext(),HomeActivity.class );
-//            startActivity(HomeActivity);
-//            finish();
-//        }
+        if (restorePrefData()) {
+
+            Intent HomeActivity = new Intent(getApplicationContext(),HomeActivity.class );
+            startActivity(HomeActivity);
+            finish();
+        }
 
         layoutOnboardingIndicators = findViewById(R.id.layoutOnboardingIndicators);
         buttonOnboardingAction = findViewById(R.id.buttonOnboardingAction);

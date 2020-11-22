@@ -4,8 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,6 +20,8 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.pb_naruto.R;
 import com.example.pb_naruto.adapters.AnimeAdapter;
+import com.example.pb_naruto.helper.DBHelper;
+import com.example.pb_naruto.helper.DBHelperApi;
 import com.example.pb_naruto.model.AnimeList;
 
 import org.json.JSONArray;
@@ -45,6 +52,7 @@ public class Main_ListBatik extends AppCompatActivity  implements AnimeAdapter.O
     private AnimeAdapter mExampleAdapter;
     private ArrayList<AnimeList> animeLists;
     private RequestQueue mRequestQueue;
+    DBHelperApi db;
 
 
     @Override
@@ -52,12 +60,30 @@ public class Main_ListBatik extends AppCompatActivity  implements AnimeAdapter.O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main__list_batik);
 
+        db = new DBHelperApi(this);
+
+
         mRecyclerView = findViewById(R.id.recycler_view);
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        animeLists = new ArrayList<>();
         mRequestQueue = Volley.newRequestQueue(this);
-        parseJSON();
+        animeLists = new ArrayList<>();
+
+
+        if(haveNetworkConnection()==false){
+            parseJSON();
+        }else{
+            db = new DBHelperApi(this);
+            animeLists = new ArrayList<>();
+            animeLists = db.ListAnime();
+            if(animeLists.size() > 0){
+                mExampleAdapter = new AnimeAdapter(Main_ListBatik.this, animeLists);
+                mRecyclerView.setAdapter(mExampleAdapter);
+                mExampleAdapter.setOnItemClickListener(Main_ListBatik.this);
+            }
+        };
+
+
     }
 
     private void parseJSON() {
@@ -82,26 +108,24 @@ public class Main_ListBatik extends AppCompatActivity  implements AnimeAdapter.O
                                 int mmembers  = hit.getInt("members");
                                 String mrated  = hit.getString("rated");
                                 int mepisodes = hit.getInt("episodes");
-
+                                int mal_id = hit.getInt("mal_id");
                                 SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
                                 try {
+
+                                    Boolean APIJSONSAVE = db.insertDataApi(mal_id,mimage_url, mtitle, mepisodes,murl,mairing,msynopsis,mtype,mscore,mstart_date,mend_date,mmembers,mrated);
                                     Date start1 = format.parse(mstart_date);
                                     String start_date = format.format(start1);
-
                                     Date end1 = format.parse(mend_date);
                                     String end_date = format.format(end1);
-                                    animeLists.add(new AnimeList(mimage_url, mtitle, mepisodes,murl,mairing,msynopsis,mtype,mscore,start_date,end_date,mmembers,mrated));
+                                    animeLists.add(new AnimeList(mal_id,mimage_url, mtitle, mepisodes,murl,mairing,msynopsis,mtype,mscore,start_date,end_date,mmembers,mrated));
                                 } catch (ParseException e) {
                                     e.printStackTrace();
                                 }
-
-
-
                             }
+
+
                             mExampleAdapter = new AnimeAdapter(Main_ListBatik.this, animeLists);
                             mRecyclerView.setAdapter(mExampleAdapter);
-
-//                            here
                             mExampleAdapter.setOnItemClickListener(Main_ListBatik.this);
 
 
@@ -137,4 +161,24 @@ public class Main_ListBatik extends AppCompatActivity  implements AnimeAdapter.O
         startActivity(detailIntent);
 
     }
+
+    private boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
+    }
+
+
+
 }
