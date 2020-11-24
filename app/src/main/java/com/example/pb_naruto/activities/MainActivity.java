@@ -5,6 +5,7 @@ import androidx.core.content.ContextCompat;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        if (restorePrefData()) {
+
+            Intent HomeActivity = new Intent(getApplicationContext(),HomeActivity.class );
+            startActivity(HomeActivity);
+            finish();
+        }
 
         layoutOnboardingIndicators = findViewById(R.id.layoutOnboardingIndicators);
         buttonOnboardingAction = findViewById(R.id.buttonOnboardingAction);
@@ -56,8 +65,9 @@ public class MainActivity extends AppCompatActivity {
                 if(onboardingViewPager.getCurrentItem()+1 < onboardingAdapter.getItemCount()){
                     onboardingViewPager.setCurrentItem(onboardingViewPager.getCurrentItem()+1);
                 }else{
-                    Intent explicit = new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent explicit = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(explicit);
+                    savePrefsData();
                     finish();
                 }
             }
@@ -131,6 +141,27 @@ public class MainActivity extends AppCompatActivity {
         }else{
             buttonOnboardingAction.setText("Next");
         }
+    }
+
+    private boolean restorePrefData() {
+
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
+        Boolean isIntroActivityOpnendBefore = pref.getBoolean("isIntroOpnend",false);
+        return  isIntroActivityOpnendBefore;
+
+
+
+    }
+
+    private void savePrefsData() {
+
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("myPrefs",MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        editor.putBoolean("isIntroOpnend",true);
+        editor.commit();
+
+
     }
 
 }
