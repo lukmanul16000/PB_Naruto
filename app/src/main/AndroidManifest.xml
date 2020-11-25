@@ -14,8 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activities.version_app"></activity>
-        <activity android:name=".activities.SplashScreen" />
-        <activity android:name=".activities.MainActivity2" />
+        <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.RegisterActivity" />
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.HomeActivity" />
@@ -23,7 +22,8 @@
         <activity android:name=".activities.about_team" />
         <activity android:name=".activities.AboutApp" />
         <activity android:name=".activities.AnimeDetail" />
-        <activity android:name=".activities.MainActivity">
+        <activity android:name=".activities.version_app"></activity>
+        <activity android:name=".activities.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
