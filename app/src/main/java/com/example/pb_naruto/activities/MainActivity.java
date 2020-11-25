@@ -79,19 +79,19 @@ public class MainActivity extends AppCompatActivity {
         List<OnboardingItem> onboardingItems = new ArrayList<>();
 
         OnboardingItem itemtitle = new OnboardingItem();
-        itemtitle.setTitle("1");
-        itemtitle.setDescription("1");
-        itemtitle.setImage(R.drawable.gambar);
+        itemtitle.setTitle("aplikasi Naruto");
+        itemtitle.setDescription("mau nonton anime naruto gratis?di aplikasi naruto aja");
+        itemtitle.setImage(R.drawable.naruto2);
 
         OnboardingItem itemdesc = new OnboardingItem();
-        itemdesc.setTitle("2");
-        itemdesc.setDescription("2");
-        itemdesc.setImage(R.drawable.gambar);
+        itemdesc.setTitle("Boruto");
+        itemdesc.setDescription("tonton anime boruto gratis hanya di aplikasi naruto");
+        itemdesc.setImage(R.drawable.naruto3);
 
         OnboardingItem itemimg = new OnboardingItem();
-        itemimg.setTitle("3");
-        itemimg.setDescription("3");
-        itemimg.setImage(R.drawable.gambar);
+        itemimg.setTitle("aplikasi Naruto");
+        itemimg.setDescription("menyediakan streaming anime Naruto shipuden dan Boruto gratis");
+        itemimg.setImage(R.drawable.naruto4);
 
         onboardingItems.add(itemtitle);
         onboardingItems.add(itemdesc);

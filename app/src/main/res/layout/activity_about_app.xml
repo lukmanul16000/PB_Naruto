@@ -36,7 +36,7 @@
             android:layout_weight="2"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Testing test test"
+            android:text="Versi aplikasi 1.beta"
             android:textAllCaps="true"
             android:textStyle="bold|italic" />
 
