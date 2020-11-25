@@ -7,6 +7,7 @@
     <color name="colorTextSecondary">#757575</color>
     <color name="colorBackground">#FFFFFF</color>
     <color name="colorOnboardingIndicatorInactive">#72BCF7</color>
+    <color name="oren">#FFCC80</color>
 
     <!--    <color name="colorPrimary">#FFC107</color>-->
     <!--    <color name="colorPrimaryDark">#FFA000</color>-->
