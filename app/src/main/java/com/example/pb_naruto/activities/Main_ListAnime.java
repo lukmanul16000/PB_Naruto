@@ -6,11 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -20,7 +18,6 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.pb_naruto.R;
 import com.example.pb_naruto.adapters.AnimeAdapter;
-import com.example.pb_naruto.helper.DBHelper;
 import com.example.pb_naruto.helper.DBHelperApi;
 import com.example.pb_naruto.model.AnimeList;
 
@@ -33,7 +30,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Main_ListBatik extends AppCompatActivity  implements AnimeAdapter.OnItemClickListener{
+public class Main_ListAnime extends AppCompatActivity  implements AnimeAdapter.OnItemClickListener{
 //    handel
 
     public static final String EXTRA_URL = "image_url";
@@ -77,9 +74,9 @@ public class Main_ListBatik extends AppCompatActivity  implements AnimeAdapter.O
             animeLists = new ArrayList<>();
             animeLists = db.ListAnime();
             if(animeLists.size() > 0){
-                mExampleAdapter = new AnimeAdapter(Main_ListBatik.this, animeLists);
+                mExampleAdapter = new AnimeAdapter(Main_ListAnime.this, animeLists);
                 mRecyclerView.setAdapter(mExampleAdapter);
-                mExampleAdapter.setOnItemClickListener(Main_ListBatik.this);
+                mExampleAdapter.setOnItemClickListener(Main_ListAnime.this);
             }
         };
 
@@ -124,9 +121,9 @@ public class Main_ListBatik extends AppCompatActivity  implements AnimeAdapter.O
                             }
 
 
-                            mExampleAdapter = new AnimeAdapter(Main_ListBatik.this, animeLists);
+                            mExampleAdapter = new AnimeAdapter(Main_ListAnime.this, animeLists);
                             mRecyclerView.setAdapter(mExampleAdapter);
-                            mExampleAdapter.setOnItemClickListener(Main_ListBatik.this);
+                            mExampleAdapter.setOnItemClickListener(Main_ListAnime.this);
 
 
 

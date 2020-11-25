@@ -6,7 +6,6 @@ import androidx.cardview.widget.CardView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.example.pb_naruto.R;
 
@@ -27,7 +26,7 @@ public class HomeActivity extends AppCompatActivity {
         card1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent explicit = new Intent(getApplicationContext(), Main_ListBatik.class);
+                Intent explicit = new Intent(getApplicationContext(), Main_ListAnime.class);
                 startActivity(explicit);
             }
         });

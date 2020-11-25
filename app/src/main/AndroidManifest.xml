@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -17,7 +16,7 @@
         <activity android:name=".activities.RegisterActivity"></activity>
         <activity android:name=".activities.LoginActivity" />
         <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.Main_ListBatik" />
+        <activity android:name=".activities.Main_ListAnime" />
         <activity android:name=".activities.about_team" />
         <activity android:name=".activities.AboutApp" />
         <activity android:name=".activities.AnimeDetail" />
