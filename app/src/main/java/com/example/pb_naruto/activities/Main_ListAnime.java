@@ -67,9 +67,9 @@ public class Main_ListAnime extends AppCompatActivity  implements AnimeAdapter.O
         animeLists = new ArrayList<>();
 
 
-        if(haveNetworkConnection()==false){
+        if(haveNetwork()){
             parseJSON();
-        }else{
+        }else if (!haveNetwork()) {
             db = new DBHelperApi(this);
             animeLists = new ArrayList<>();
             animeLists = db.ListAnime();
@@ -159,21 +159,16 @@ public class Main_ListAnime extends AppCompatActivity  implements AnimeAdapter.O
 
     }
 
-    private boolean haveNetworkConnection() {
-        boolean haveConnectedWifi = false;
-        boolean haveConnectedMobile = false;
-
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
-        for (NetworkInfo ni : netInfo) {
-            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
-                if (ni.isConnected())
-                    haveConnectedWifi = true;
-            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
-                if (ni.isConnected())
-                    haveConnectedMobile = true;
+    private boolean haveNetwork(){
+        boolean have_WIFI= false;
+        boolean have_MobileData = false;
+        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
+        NetworkInfo[] networkInfos = connectivityManager.getAllNetworkInfo();
+        for(NetworkInfo info:networkInfos){
+            if (info.getTypeName().equalsIgnoreCase("WIFI"))if (info.isConnected())have_WIFI=true;
+            if (info.getTypeName().equalsIgnoreCase("MOBILE DATA"))if (info.isConnected())have_MobileData=true;
         }
-        return haveConnectedWifi || haveConnectedMobile;
+        return have_WIFI||have_MobileData;
     }
 
 
