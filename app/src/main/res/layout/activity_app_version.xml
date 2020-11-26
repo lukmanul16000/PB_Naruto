@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".activities.HomeActivity">
+    tools:context=".activities.AppVersion">
 
     <LinearLayout
         android:orientation="vertical"
@@ -27,7 +27,7 @@
                 android:layout_marginTop="305dp"
                 android:layout_marginEnd="126dp"
                 android:layout_marginRight="126dp"
-                android:text="About App"
+                android:text="App Version"
                 android:textColor="@android:color/black"
                 android:textSize="34sp" />
 
@@ -44,7 +44,7 @@
                 android:layout_marginTop="394dp"
                 android:layout_marginEnd="21dp"
                 android:layout_marginRight="21dp"
-                android:text="Aplikasi Tentang Naruto serta episode dan rating"
+                android:text="1A.Beta"
                 android:gravity="center"
                 android:textColor="@android:color/black"
                 android:textSize="22sp" />
@@ -54,4 +54,5 @@
 
 
     </LinearLayout>
+
 </RelativeLayout>

@@ -50,8 +50,8 @@ public class HomeActivity extends AppCompatActivity {
         card4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//             Intent explicit = new Intent(getApplicationContext(), about_team.class);
-//             startActivity(explicit);
+             Intent explicit = new Intent(getApplicationContext(), AppVersion.class);
+             startActivity(explicit);
             }
         });
 

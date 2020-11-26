@@ -181,7 +181,7 @@
                         android:layout_gravity="center_horizontal"
                         android:src="@drawable/setting" />
                     <TextView
-                        android:text="Settings"
+                        android:text="Version"
                         android:textAlignment="center"
                         android:textColor="@android:color/black"
                         android:textSize="18sp"
