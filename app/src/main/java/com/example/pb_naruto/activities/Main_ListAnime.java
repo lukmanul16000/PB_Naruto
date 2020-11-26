@@ -67,9 +67,14 @@ public class Main_ListAnime extends AppCompatActivity  implements AnimeAdapter.O
         animeLists = new ArrayList<>();
 
 
-        if(haveNetwork()){
+
+        ConnectivityManager cm =(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+
+
+        if( activeNetwork != null &&activeNetwork.isConnectedOrConnecting()==true){
             parseJSON();
-        }else if (!haveNetwork()) {
+        }else{
             db = new DBHelperApi(this);
             animeLists = new ArrayList<>();
             animeLists = db.ListAnime();
@@ -159,17 +164,21 @@ public class Main_ListAnime extends AppCompatActivity  implements AnimeAdapter.O
 
     }
 
-    private boolean haveNetwork(){
-        boolean have_WIFI= false;
-        boolean have_MobileData = false;
-        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
-        NetworkInfo[] networkInfos = connectivityManager.getAllNetworkInfo();
-        for(NetworkInfo info:networkInfos){
-            if (info.getTypeName().equalsIgnoreCase("WIFI"))if (info.isConnected())have_WIFI=true;
-            if (info.getTypeName().equalsIgnoreCase("MOBILE DATA"))if (info.isConnected())have_MobileData=true;
-        }
-        return have_WIFI||have_MobileData;
-    }
+//    private boolean haveNetwork(){
+//        boolean have_WIFI= false;
+//        boolean have_MobileData = false;
+//        ConnectivityManager connectivityManager = (ConnectivityManager)getSystemService(CONNECTIVITY_SERVICE);
+//        NetworkInfo[] networkInfos = connectivityManager.getAllNetworkInfo();
+//        for(NetworkInfo info:networkInfos){
+//            if (info.getTypeName().equalsIgnoreCase("WIFI"))if (info.isConnected())have_WIFI=true;
+//            if (info.getTypeName().equalsIgnoreCase("MOBILE DATA"))if (info.isConnected())have_MobileData=true;
+//        }
+//        return have_WIFI||have_MobileData;
+//    }
+//
+
+
+
 
 
 
